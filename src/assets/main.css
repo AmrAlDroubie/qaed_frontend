@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: Dubai;
+  src: url('/fonts/Dubai-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: Dubai;
+  src: url('/fonts/Dubai-Medium.woff2') format('woff2');
+  font-weight: 400 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: Dubai;
+  src: url('/fonts/Dubai-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  /* Shared typography scale; layout spacing and icon sizes stay independent. */
+  --font-scale: 1.125;
+}
+
+@theme {
+  --font-sans: Dubai, Tahoma, sans-serif;
+  --text-micro: calc(0.5625rem * var(--font-scale));
+  --text-caption: calc(0.625rem * var(--font-scale));
+  --text-fine: calc(0.6875rem * var(--font-scale));
+  --text-date: calc(0.725rem * var(--font-scale));
+  --text-xs: calc(0.75rem * var(--font-scale));
+  --text-table: calc(0.7875rem * var(--font-scale));
+  --text-label: calc(0.8125rem * var(--font-scale));
+  --text-sm: calc(0.875rem * var(--font-scale));
+  --text-nav: calc(0.9375rem * var(--font-scale));
+  --text-base: calc(1rem * var(--font-scale));
+  --text-lg: calc(1.125rem * var(--font-scale));
+  --text-xl: calc(1.25rem * var(--font-scale));
+  --text-2xl: calc(1.5rem * var(--font-scale));
+  --text-3xl: calc(1.875rem * var(--font-scale));
+  --text-4xl: calc(2.25rem * var(--font-scale));
+  --text-5xl: calc(3rem * var(--font-scale));
+  --color-brand: #1e6b63;
+  --color-brand-dark: #18564f;
+  --color-mint: #a7f3d0;
+  --color-canvas: #f8faf9;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --shadow-shell: 0 25px 65px rgb(15 23 42 / 12%);
+  --shadow-form: 0 18px 55px rgb(15 23 42 / 8%);
+  --shadow-button: 0 10px 15px rgb(30 107 99 / 15%), 0 4px 6px rgb(30 107 99 / 15%);
+}
+
+body { margin: 0; min-width: 320px; font-size: var(--text-base); color: var(--color-ink); background: var(--color-canvas); }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 4px; }
+
+/* Text fields retain their resting border when focused. */
+:is(input:not([type]), input[type='text'], input[type='email'], input[type='password'], input[type='search'], input[type='tel'], input[type='url'], input[type='number'], textarea):focus {
+  outline: none;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-ring-offset-shadow: 0 0 #0000;
+}
+
+/* Keep the complete form within short mobile and landscape viewports. */
+@media (max-height: 600px) {
+  .login-header { margin-bottom: 12px; gap: 0; padding-bottom: 0; }
+  .login-header h1 { font-size: var(--text-2xl); line-height: 1.25; }
+  .login-form { padding: 12px; }
+  .login-form > div { gap: 6px; }
+  .auth-field { min-height: 0; }
+  .auth-field label { margin-bottom: 4px; }
+  .auth-field input { height: 36px; }
+  .auth-field input + button { top: 2px; }
+  .auth-field .pointer-events-none { top: 10px; }
+  .login-form > button { margin-top: 12px; height: 36px; }
+  .login-content > [role='status'] { margin-top: 8px; }
+}
